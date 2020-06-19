@@ -1541,10 +1541,8 @@ SEARCH_FILTERS = {
 
 # HTML WYSIWYG Editor (TINYMCE) Menu Bar Settings
 TINYMCE_DEFAULT_CONFIG = {
+    "extended_valid_elements" : 'a[class|name|href|target|title|onclick|rel],script[type|src],iframe[src|style|width|height|scrolling|marginwidth|marginheight|frameborder],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name]',
     "selector": "textarea#id_resource-featureinfo_custom_template",
-    "extended_valid_elements": 'em[class|name|id], script[language|type|src|async|defer|type|charset]',
-    "valid_children": '+*[*]',
-    "valid_elements": '*[*]',
     "theme": "silver",
     "height": 500,
     "plugins": 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
