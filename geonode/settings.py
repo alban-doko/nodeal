@@ -1541,14 +1541,15 @@ SEARCH_FILTERS = {
 
 # HTML WYSIWYG Editor (TINYMCE) Menu Bar Settings
 TINYMCE_DEFAULT_CONFIG = {
-    "extended_valid_elements" : 'a[class|name|href|target|title|onclick|rel],script[type|src],iframe[src|style|width|height|scrolling|marginwidth|marginheight|frameborder],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name]',
     "selector": "textarea#id_resource-featureinfo_custom_template",
+    "valid_elements" : "+*[*]",
+    "allow_script_urls" : "true",
     "theme": "silver",
     "height": 500,
-    "plugins": 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+    "plugins": 'print preview paste importcss searchreplace autolink autosave save directionality bbcode code charts visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
     "imagetools_cors_hosts": ['picsum.photos'],
-    "menubar": 'file edit view insert format tools table help',
-    "toolbar": 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save | insertfile image media template link anchor codesample | ltr rtl',
+    "menubar": 'file edit view insert format tools table help charts',
+    "toolbar": 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save | insertfile charts image media template link anchor codesample | ltr rtl',
     "toolbar_sticky": "true",
     "autosave_ask_before_unload": "true",
     "autosave_interval": "30s",
@@ -1565,19 +1566,9 @@ TINYMCE_DEFAULT_CONFIG = {
     "contextmenu": "link image imagetools table",
     "templates": [
         {
-            "title": 'New Table',
-            "description": 'creates a new table',
-            "content": '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>'
-        },
-        {
-            "title": 'Starting my story',
-            "description": 'A cure for writers block',
-            "content": 'Once upon a time...'
-        },
-        {
-            "title": 'New list with dates',
-            "description": 'New List with dates',
-            "content": '<div class="mceTmpl"><span class="cdate">cdate</span><br /><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>'
+            "title": 'Time Series',
+            "description": 'Line Chart',
+            "content": '<iframe src="https://chart.googleapis.com/chart?cht=lxy&chs=400x250&chd=t:${properties.Data1}|${properties.Data2}&chxs=0,ff0000,12,0,lt|1,0000ff,10,1,lt&chtt=Time Series&chxt=x,x,y,y&chxl=1:|time|3:|depth|&chxp=1,50|3,50" iframe=""></iframe>'
         }
     ],
     "template_cdate_format": '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
