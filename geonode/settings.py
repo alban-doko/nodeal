@@ -1546,10 +1546,10 @@ TINYMCE_DEFAULT_CONFIG = {
     "allow_script_urls" : "true",
     "theme": "silver",
     "height": 500,
-    "plugins": 'print preview paste importcss searchreplace autolink autosave save directionality bbcode code charts visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+    "plugins": 'charts print preview paste importcss searchreplace autolink autosave save directionality bbcode code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
     "imagetools_cors_hosts": ['picsum.photos'],
-    "menubar": 'file edit view insert format tools table help charts',
-    "toolbar": 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save | insertfile charts image media template link anchor codesample | ltr rtl',
+    "menubar": 'file edit view insert format tools table help',
+    "toolbar": 'charts code undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save | insertfile image media template link anchor codesample | ltr rtl',
     "toolbar_sticky": "true",
     "autosave_ask_before_unload": "true",
     "autosave_interval": "30s",
@@ -1564,17 +1564,9 @@ TINYMCE_DEFAULT_CONFIG = {
     "noneditable_noneditable_class": "mceNonEditable",
     "toolbar_mode": 'sliding',
     "contextmenu": "link image imagetools table",
-    "templates": [
-        {
-            "title": 'Time Series',
-            "description": 'Line Chart',
-            "content": '<iframe src="https://chart.googleapis.com/chart?cht=lxy&chs=400x250&chd=t:${properties.Data1}|${properties.Data2}&chxs=0,ff0000,12,0,lt|1,0000ff,10,1,lt&chtt=Time Series&chxt=x,x,y,y&chxl=1:|time|3:|depth|&chxp=1,50|3,50" iframe=""></iframe>'
-        }
-    ],
     "template_cdate_format": '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
     "template_mdate_format": '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
-}
-
+ }
 # Make Free-Text Kaywords writable from users or read-only
 # - if True only admins can edit free-text kwds from admin dashboard
 FREETEXT_KEYWORDS_READONLY = ast.literal_eval(os.environ.get('FREETEXT_KEYWORDS_READONLY', 'False'))
