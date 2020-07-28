@@ -1,74 +1,77 @@
-var win
+(function () {
+    var charts = (function () {
+        'use strict';
+        tinymce.PluginManager.add("charts", function (editor, url) {
 
-tinymce.PluginManager.add('charts', function(editor, url) {
-    // Add a button that opens a window
-    editor.addButton('charts', {
-        text: 'Charts',
-        icon: 'line-chart',
-        onclick: function() {
-            showModal(url);
-        }
-    });
-
-    // Adds a menu item to the tools menu
-    editor.addMenuItem('charts', {
-        text: 'Charts',
-        context: 'tools',
-        onclick: function() {
-            // Open window with a specific url
-            editor.windowManager.open({
-                title: 'TinyMCE site',
-                url: 'http://www.tinymce.com',
-                width: 800,
-                height: 600,
-                buttons: [{
-                    text: 'Close',
-                    onclick: 'close'
-                }]
+            function _onAction()
+            {
+                // Open a Dialog
+				editor.windowManager.open({
+					title: 'Chart Time Series',
+					body: {
+						type: 'panel',
+						items: [
+							{
+								type: 'input',
+								name: 'tl',
+								label: 'Title',
+							},
+							{
+								type: 'input',
+								name: 'xat',
+								label: 'X Attribute',
+								inputMode: 'text'
+							},
+							{
+								type: 'input',
+								name: 'yat',
+								label: 'Y Attribute',
+								inputMode: 'text'
+							},
+							{
+							type: 'input',
+							name: 'x',
+							label: 'X Axis Name'
+							},
+							{type: 'input',
+							name: 'y',
+							label: 'Y Axis Name'
+							}	
+					]
+					},
+					onSubmit: function (api) {
+						// insert markup
+						editor.insertContent('<p> <iframe width="600" height="400" seamless="" frameborder="0" scrolling="yes" src="https://chart.googleapis.com/chart?cht=lxy&chs=550x350&chd=t:${properties.'+ api.getData().xat +'}|${properties.'+ api.getData().yat +'}&chds=a&chxs=3,000000,14,0,lt|1,000000,14,0,lt&chtt='+api.getData().tl+'&chxt=x,x,y,y&chxl=1:|'+api.getData().x+'|3:|'+api.getData().y+'|&chxp=1,50|3,50" iframe=""></iframe> </p>');
+						 // close the dialog
+						 api.close();
+					},
+					buttons: [
+						{
+								text: 'Close',
+								type: 'cancel',
+								onclick: 'close'
+						},
+						{
+								text: 'Insert',
+								type: 'submit',
+								primary: true,
+								enabled: false
+						}
+					]
+				});
+			}
+		   // Define the Toolbar button
+            editor.ui.registry.addButton('charts', {
+                text: "Charts",
+                onAction: _onAction
             });
-        }
-    });
-    
-    editor.on('init', function() {
-		
-	});
 
-    var showModal = function(url) {
-        // Open window
-        win = editor.windowManager.open({
-            title: 'Chart',
-            body: [
-                {type: 'textbox', name: 'title', label: 'Title'},
-            ],
-            width: 700,
-            height: 500,
-            onsubmit: function(e) {
-                // Insert content when the window form is submitted
-                editor.insertContent('Title: ' + e.data.title);
-            }
+            // Define the Menu Item
+            editor.ui.registry.addMenuItem('charts', {
+                text: 'Charts Menu Item',
+                context: 'insert',
+                onAction: _onAction
+            });
         });
-        
-        initModal(win);
-    };
-    
-    var initModal = function(win) {
-		var id = win._id;
-		var body = win.$el.find('div#' + id + '-body')[0];
-		body.innerHTML = '<div>'
-			+ '<div id="' + id + '-charts-chart-container">'
-				+ '<canvas id="' + id + '-charts-chart"></canvas>'
-			+ '</div>'
-			+ '<div id="' + id + '-charts-data-container">'
-				+ '<h2>Data</h2>'
-				+ '<div id="' + id + '-charts-data-table-wrapper">'
-					+ '<table id="' + id + '-charts-data-table>'
-						+ ''
-					+ '</table>'
-				+ '</div>'
-			+ '</div>'
-			+ '<div id="' + id + '-charts-options-container">'
-				+ '<h2>Options</h2>'
-			+ '</div>'
-		+ '</div>';
-	};
-});
+    }());
+})();
