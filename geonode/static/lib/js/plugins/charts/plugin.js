@@ -41,7 +41,7 @@
 					},
 					onSubmit: function (api) {
 						// insert markup
-						editor.insertContent('<p> <iframe width="600" height="400" seamless="" frameborder="0" scrolling="yes" src="https://chart.googleapis.com/chart?cht=lxy&chs=550x350&chd=t:${properties.'+ api.getData().xat +'}|${properties.'+ api.getData().yat +'}&chds=a&chxs=3,000000,14,0,lt|1,000000,14,0,lt&chtt='+api.getData().tl+'&chxt=x,x,y,y&chxl=1:|'+api.getData().x+'|3:|'+api.getData().y+'|&chxp=1,50|3,50" iframe=""></iframe> </p>');
+						editor.insertContent('<p> <iframe width="600" height="400" seamless="" frameborder="0" scrolling="yes" src="https://chart.googleapis.com/chart?cht=lxy&chs=550x350&chd=t:${properties.'+ api.getData().xat +'}|${properties.'+ api.getData().yat +'}&chds=a&chxs=3,808080,14,0,lt|1,808080,14,0,lt&chtt='+api.getData().tl+'&chxt=x,x,y,y&chxl=1:|||'+api.getData().x+'|||3:|||'+api.getData().y+'||&chm=o,0066ff,0,-1,5&chg=10,10" iframe=""></iframe> </p>');
 						 // close the dialog
 						 api.close();
 					},
